@@ -1,0 +1,32 @@
+http://localhost:3000/issues
+
+###
+
+POST http://localhost:3000/issues HTTP/1.1
+content-type: application/json
+
+# {"company":"s","quantity":"1"}
+{
+    "title": "fsdgfh",
+    "severity": "Major",
+    "status": "In Progress",
+    "createdate":  "2019-6-28",
+    "resolvedate": "2019-6-30"
+  }
+###
+
+put http://localhost:3000/issues/GUt0qSm HTTP/1.1
+content-type: application/json
+
+# {"company":"s","quantity":"1"}
+{
+    "title": "fsdgfh",
+    "severity": "Suraj",
+    "status": "In Progress",
+    "createdate":  "2019-6-28",
+    "resolvedate": "2019-6-30"
+  }
+###
+
+DELETE  http://localhost:3000/issues/4 HTTP/1.1
+content-type: application/json

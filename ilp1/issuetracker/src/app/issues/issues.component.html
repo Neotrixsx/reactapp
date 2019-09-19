@@ -1,0 +1,52 @@
+<div class="pad-top10"></div>
+<div class="wrapper">
+  <div class="content-wrapper">
+    <section class="content-header">
+      <section class="content">
+        <div class="form-group">
+
+          <input type='text' class="form-control" style='padding:8px;margin:15px auto;width:30%;'
+            placeholder='Type to filter the issue column...' (keyup)='updateFilter($event)' />
+          <ngx-datatable #table class="bootstrap" [rows]="rows" [columns]="columns" [columnMode]="'force'"
+            [headerHeight]="40" [footerHeight]="40" [limit]="6" [rowHeight]="'auto'" [reorderable]="reorderable"
+            [selected]="selectedData" [selectionType]="'single'">
+
+            <ngx-datatable-column name="Description" prop="description"></ngx-datatable-column>
+            <ngx-datatable-column name="Severity" prop="severity"></ngx-datatable-column>
+            <ngx-datatable-column name="Status" prop="status"></ngx-datatable-column>
+            <ngx-datatable-column name="Created Date" prop="createddate"></ngx-datatable-column>
+            <ngx-datatable-column name="Resolved Date" prop="resolveddate"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Edit" prop="edit">
+              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                <button class="btn btn-success btn-mini" *ngIf='!row.unAssigning'
+                  (click)="$event.preventDefault(); $event.stopPropagation(); onEdit(row)">
+                  Edit
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Delete" prop="delete">
+              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                <button class="btn btn-danger btn-mini" *ngIf='!row.unAssigning'
+                  (click)="$event.preventDefault(); $event.stopPropagation(); onDelete(row)">
+                  Delete
+                </button>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+        <!-- <div class='selected-column'>
+          <h4>Selections</h4>
+          <ul>
+            <li *ngFor='let sel of selected'>
+              {{sel.description}}
+            </li>
+            <li *ngIf="!selected.length">No Selections</li>
+          </ul>
+        </div> -->
+
+      </section>
+    </section>
+  </div>
+</div>

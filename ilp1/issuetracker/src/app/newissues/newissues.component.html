@@ -1,0 +1,64 @@
+<div class="pad-top10"></div>
+<form class="form-horizontal" #newIssues="ngForm" (ngSubmit)="onClickSubmit(newIssues.value)">
+  <div class="form-group" hidden>
+    <label for="inputId" class="col-sm-2 control-label">ID</label>
+    <div class="col-sm-10">
+      <input type="text" [(ngModel)]="id" class="form-control" name="id" id="id" placeholder="id">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputTitle" class="col-sm-2 control-label">Description</label>
+    <div class="col-sm-10">
+      <textarea [(ngModel)]="description" class="form-control" name="description" id="title" placeholder="Title"
+        cols="30" rows="4"></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputTitle" class="col-sm-2 control-label">Severity</label>
+    <div class="col-sm-10">
+      <select name="severity" [(ngModel)]="severity" id="severity" class="form-control">
+        <option value="Minor">Minor</option>
+        <option value="Major">Major</option>
+        <option value="Critical">Critical</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputTitle" class="col-sm-2 control-label">Status</label>
+    <div class="col-sm-10">
+      <select name="status" [(ngModel)]="status" id="status" class="form-control">
+        <option value="Open">Open</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Closed">Closed</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputTitle" class="col-sm-2 control-label">Created Date</label>
+    <div class="input-group col-10">
+      <input class="form-control" placeholder="yyyy-mm-dd" readonly name="createddate" [(ngModel)]="createddate" ngbDatepicker
+        #d1="ngbDatepicker">
+      <button class="input-group-addon" (click)="d1.toggle()" type="button">
+        <img src="../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+      </button>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputTitle" class="col-sm-2 control-label">Resolved Date</label>
+    <div class="input-group col-10">
+      <input class="form-control" placeholder="yyyy-mm-dd" readonly name="resolveddate" [(ngModel)]="resolveddate" ngbDatepicker
+        #d2="ngbDatepicker">
+      <button class="input-group-addon" (click)="d2.toggle()" type="button">
+        <img src="../../assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+      </button>
+    </div>
+  </div>
+  <hr />
+  <!-- <pre>create date: {{ createdate | json }}</pre>
+  <pre>resolve date: {{ resolvedate | json }}</pre> -->
+  <div class="form-group">
+    <div class="col-10">
+      <button type="submit" class="btn col-sm-12 btn-success">Submit</button>
+    </div>
+  </div>
+</form>

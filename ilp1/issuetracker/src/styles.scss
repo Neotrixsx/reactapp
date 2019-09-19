@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@swimlane/ngx-datatable/release/index.css";
+@import "../node_modules/@swimlane/ngx-datatable/release/themes/bootstrap.css";
+@import "../node_modules/@swimlane/ngx-datatable/release/assets/icons.css";
+
+.pad-top10{
+    padding-top: 10px;
+}
+
+.ngx-datatable.bootstrap .datatable-body .datatable-body-row.active {
+    background-color: #ffffff !important;
+    color: #000 !important;
+}
