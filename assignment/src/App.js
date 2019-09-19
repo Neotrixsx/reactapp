@@ -7,6 +7,8 @@ class App extends Component {
     this.state = {
       counter: 0
     };
+    this.increase = this.increase.bind(this);
+    this.decrease = this.decrease.bind(this);
   }
   increase() {
     this.setState ({
@@ -25,7 +27,7 @@ class App extends Component {
       <div>
         <h1>Counter : {counter}</h1>
         <button onClick = {this.increase}>Increament</button>
-        <button onClick = {this.increase}>Decreament</button>
+        <button onClick = {this.decrease}>Decreament</button>
       </div>
     );
   }
