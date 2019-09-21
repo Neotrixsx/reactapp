@@ -1,0 +1,24 @@
+.nav-class {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1071;
+  min-height: 4rem;
+  background-color: #563d7c;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 30px;
+  padding: 10px 0px 0px 50px;
+  font-weight: 700;
+  color: white;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: transparent;
+  height: 64px;
+  font-size: 20px;
+}

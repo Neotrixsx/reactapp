@@ -1,27 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Route,BrowserRouter as Router } from "react-router-dom";
 import './App.css';
+import Navbarcomp from './Components/App-navbar/app-navbar';
+import NewIssue from './Components/NewIssue/NewIssue.js';
 
 class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-        </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-        </a>
-        </header>
-      </div>
+      <Router>
+        <div className="container pad-top10">
+          <Navbarcomp />
+          {/* <Route exact path="/" component={Navbarcomp} />
+          <Route path="/newissue" component={Navbarcomp} /> */}
+          <NewIssue />
+        </div>
+      </Router>
     );
   }
 }
