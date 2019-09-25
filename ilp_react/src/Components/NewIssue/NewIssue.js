@@ -1,5 +1,5 @@
 import React from 'react';
-import DatePicker from 'react-datepicker';
+import DatePicker from 'react-date-picker';
 
 class newIssue extends React.Component {
     constructor(props) {
@@ -94,7 +94,7 @@ class newIssue extends React.Component {
                         <label for="inputTitle" class="col-sm-2 control-label">Created Date</label>
                         <div class="input-group col-10">
                             <DatePicker
-                                selected={this.state.createddate}
+                                value={this.state.createddate}
                                 onChange={this.onCreateDateChange}
                             />
                         </div>
@@ -103,7 +103,7 @@ class newIssue extends React.Component {
                         <label for="inputTitle" class="col-sm-2 control-label">Resolved Date</label>
                         <div class="input-group col-10">
                             <DatePicker
-                                selected={this.state.resolveddate}
+                                value={this.state.resolveddate}
                                 onChange={this.onResolvedDateChange}
                             />
                         </div>
