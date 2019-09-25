@@ -10,18 +10,24 @@ class Dashboard extends React.Component {
             dataIssues: [],
         };
         this.fetchData = this.fetchData.bind(this);
+        this.pushData =  this.pushData.bind(this);
         this.fetchData();
     }
 
     fetchData(){
         axios.get('http://localhost:3000/issues')
-            .then(function (response) {
+            .then( (response) => {
                 console.log(response.data);
-                this.setState({
-                    dataIssues: response.data,
-                });
+                this.pushData(response.data);
             });
     }
+
+    pushData (data) {
+        this.setState ({
+            dataIssues: data,
+        });
+    }
+
     render() {
         const {
             dataIssues = [],
