@@ -1,33 +1,40 @@
 import React from 'react';
 
-const columns = [{
-    name: 'descriptions',
-    selector: 'description',
-    sortable: true,
+const columns =(handleEdits,HandleDeletes) => [{
+    Header: 'descriptions',
+    accessor: 'description',
 },
 {
-    name: 'status',
-    selector: 'status',
+    Header: 'status',
+    accessor: 'status',
+},
+{
+    Header: 'severity',
+    accessor: 'severity',
+},
+{
+    Header: 'createddate',
+    accessor: 'createddate',
     sortable: true,
     right: true,
 },
 {
-    name: 'severity',
-    selector: 'severity',
-    sortable: true,
-    right: true,
+    Header: 'resolveddate',
+    accessor: 'resolveddate',
 },
 {
-    name: 'createddate',
-    selector: 'createddate',
-    sortable: true,
-    right: true,
+    Header: 'Edit',
+    Cell: row => (
+        <button onClick={() => handleEdits(row.id)}>Edit</button>
+    )
 },
 {
-    name: 'resolveddate',
-    selector: 'resolveddate',
-    sortable: true,
-    right: true,
-},];
+    Header: 'Delete',
+    id:'id',
+    Cell: row => (
+        <button onClick={() => HandleDeletes(row.id)}>Delete</button>
+    )
+}
+];
 
 export default columns;

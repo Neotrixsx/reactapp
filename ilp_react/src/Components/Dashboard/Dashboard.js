@@ -1,6 +1,9 @@
 import React from 'react';
-import Datatable from 'react-data-table-component';
+//import Datatable, { memoize } from 'react-data-table-component';
 import axios from 'axios';
+import ReactTable from 'react-table';
+import 'react-table/react-table.css'
+//import MyComponentHook from './NewDashboard.js';
 import columns from '../Constants/Constant.js';
 
 class Dashboard extends React.Component {
@@ -9,17 +12,23 @@ class Dashboard extends React.Component {
         this.state = {
             dataIssues: [],
         };
-        this.fetchData = this.fetchData.bind(this);
         this.fetchData();
     }
 
-    fetchData(){
+    fetchData = () => {
         axios.get('http://localhost:3000/issues')
-            .then( (response) => {
-                this.setState ({
+            .then((response) => {
+                this.setState({
                     dataIssues: response.data,
                 });
             });
+    }
+
+    handledActionEdit = state => {
+        console.log(state);
+    }
+    handledActionDelete = state => {
+        console.log('Delete'+state);
     }
     render() {
         const {
@@ -32,9 +41,13 @@ class Dashboard extends React.Component {
                         <section class="content-header">
                             <section class="content">
                                 <div class="form-group">
-                                    <Datatable
+                                    <ReactTable
                                         data={dataIssues}
-                                        columns={columns}
+                                        columns={columns(this.handledActionEdit,this.handledActionDelete)}
+                                        showPagination = {true}
+                                        showPaginationTop = {true}
+                                        pageSizeOptions = {[5, 10, 20, 25, 50, 100]}
+                                        defaultPageSize = {5}
                                     />
                                 </div>
                             </section>
@@ -45,5 +58,7 @@ class Dashboard extends React.Component {
             </div>
         );
     }
+
+
 }
 export default Dashboard;
