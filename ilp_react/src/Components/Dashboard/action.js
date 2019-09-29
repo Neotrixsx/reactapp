@@ -2,8 +2,10 @@ import axios from 'axios';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
+const APIURL = 'http://localhost:3000';
+
 function loadData() {
-    return axios.get('http://localhost:3000/issues');
+    return axios.get(APIURL+'/issues');
 }
 
 export const onClickConfirm = (desciption,type , onChange) => {
@@ -20,6 +22,18 @@ export const onClickConfirm = (desciption,type , onChange) => {
             }
         ]
     });
+}
+
+export function newData(newIssue) {
+    return axios.post(APIURL+'/issues', newIssue);
+}
+
+export function deleteData(newIssue) {
+    return axios.delete(APIURL+'/issues/'+newIssue.id);
+}
+
+export function EditData(newIssue) {
+    return axios.put(APIURL+'/issues/'+newIssue.id, newIssue);
 }
 
 export default loadData;

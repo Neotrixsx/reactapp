@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactTable from 'react-table';
-import action, { onClickConfirm } from './action.js';
+import action, { onClickConfirm, deleteData, EditData } from './action.js';
 import NewIssue from '../NewIssue/NewIssue.js';
 import 'react-table/react-table.css';
 import columns from '../Constants/Constant.js';
@@ -20,25 +20,49 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount() {
+        this.updateList();
+    }
+
+    updateList = () => {
         action()
             .then(Response => {
                 this.setState({
                     dataIssues: Response.data,
+                    clickedEditYes: false,
                 });
+            }).catch(() => {
+                toast.error("Error Occured!");
             });
+    }
+
+    onEditHandle = (edittedIssue) => {
+        this.setState({
+            ObjSelected: edittedIssue,
+        },() => {this.ToastChange();});
     }
 
     ToastChange = () => {
         const {
+            ObjSelected,
             ObjSelected: {
                 description,
             },
             action,
         } = this.state;
         if (action === 'Edit') {
-            toast.success('Edited: ' + description);
+            EditData(ObjSelected).then(() => {
+                toast.success("Edited: " + description);
+                this.updateList();
+            }).catch(() => {
+                toast.error('Error occured');
+            });
         } else {
-            toast.success('Deleted: ' + description);
+            deleteData(ObjSelected).then(() => {
+                toast.success(description + " Deleted");
+                this.updateList();
+            }).catch(() => {
+                toast.error('Error occured');
+            });
         }
     }
 
@@ -46,7 +70,6 @@ class Dashboard extends React.Component {
         return {
             onClick: () => {
                 if (column.Header === 'Edit') {
-                    console.log(rowInfo.row._original.id);
                     this.setState({
                         ObjSelected: rowInfo.row._original,
                         action: 'Edit',
@@ -113,6 +136,7 @@ class Dashboard extends React.Component {
                     clickedEditYes &&
                     <NewIssue
                         {...ObjSelected}
+                        onHandleChange={this.onEditHandle}
                     />
                 }
             </div>
