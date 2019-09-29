@@ -1,6 +1,6 @@
 import React from 'react';
 
-const columns =(handleEdits,HandleDeletes) => [{
+const columns = [{
     Header: 'descriptions',
     accessor: 'description',
 },
@@ -25,14 +25,14 @@ const columns =(handleEdits,HandleDeletes) => [{
 {
     Header: 'Edit',
     Cell: row => (
-        <button onClick={() => handleEdits(row.id)}>Edit</button>
+        <button>Edit</button>
     )
 },
 {
     Header: 'Delete',
     id:'id',
     Cell: row => (
-        <button onClick={() => HandleDeletes(row.id)}>Delete</button>
+        <button>Delete</button>
     )
 }
 ];

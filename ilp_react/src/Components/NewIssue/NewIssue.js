@@ -5,47 +5,46 @@ class newIssue extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: '',
-            description: '',
-            severity: '',
-            status: '',
-            createddate: '',
-            resolveddate: '',
+            id: props.id || '',
+            description: props.description || '',
+            severity: props.severity || '',
+            status: props.status || '',
+            createddate: props.createddate || '',
+            resolveddate: props.resolveddate || '',
+            edited: (props.id)? true : false,
         }
-        this.onIdEnter = this.onIdEnter.bind(this);
-        this.ondescriptionEnter = this.ondescriptionEnter.bind(this);
-        this.onStatusChange = this.onStatusChange.bind(this);
-        this.onseverityChange = this.onseverityChange.bind(this);
-        this.onCreateDateChange = this.onCreateDateChange.bind(this);
-        this.onResolvedDateChange = this.onResolvedDateChange.bind(this);
     }
 
-    onIdEnter(event) {
+    handleClickEvent = () => {
+        console.log ("Submitted");
+    }
+
+    onIdEnter = (event) => {
         this.setState({
             ip: event.target.value,
         });
     }
-    ondescriptionEnter(event) {
+    ondescriptionEnter = (event) => {
         this.setState({
             description: event.target.value,
         });
     }
-    onseverityChange(event) {
+    onseverityChange = (event) => {
         this.setState({
             severity: event.target.value,
         });
     }
-    onStatusChange(event) {
+    onStatusChange = (event) => {
         this.setState({
             status: event.target.value,
         });
     }
-    onCreateDateChange(date) {
+    onCreateDateChange = (date) => {
         this.setState({
             createddate: date,
         });
     }
-    onResolvedDateChange(date) {
+    onResolvedDateChange = (date) => {
         this.setState({
             resolveddate: date,
         });
@@ -53,6 +52,7 @@ class newIssue extends React.Component {
 
 
     render() {
+        console.log(this.state);
         return (
             <div>
                 <div class="pad-top10"></div>
@@ -111,7 +111,7 @@ class newIssue extends React.Component {
                     <hr />
                     <div class="form-group">
                         <div class="col-10">
-                            <button type="submit" class="btn col-sm-12 btn-success">Submit</button>
+                            <button class="btn col-sm-12 btn-success">Submit</button>
                         </div>
                     </div>
                 </form >
