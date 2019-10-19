@@ -2,7 +2,7 @@ import axios from 'axios';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
-const APIURL = 'http://localhost:3000';
+const APIURL = 'http://shubham.in/api';
 
 function loadData() {
     return axios.get(APIURL+'/issues');
