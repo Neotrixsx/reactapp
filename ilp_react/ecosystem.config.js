@@ -1,7 +1,7 @@
 module.exports = {
     apps : [{
       name: "react_app",
-      script: "./node_modules/react-scripts/scripts/start",
+      script: "./node_modules/react-scripts/scripts/start.js",
       env: {
         NODE_ENV: "development",
       },
