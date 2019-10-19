@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "json-server --watch db.json",
-    "start-open": "json-server --host 165.227.206.0 db.json 3000",
+    "start-open": "json-server --host 157.230.202.8 db.json 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
