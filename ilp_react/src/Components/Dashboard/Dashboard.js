@@ -38,7 +38,7 @@ class Dashboard extends React.Component {
     onEditHandle = (edittedIssue) => {
         this.setState({
             ObjSelected: edittedIssue,
-        },() => {this.ToastChange();});
+        }, () => { this.ToastChange(); });
     }
 
     ToastChange = () => {
@@ -110,7 +110,9 @@ class Dashboard extends React.Component {
         return (
             <div>
                 <div className="pad-top10"></div>
-                <ToastContainer />
+                <ToastContainer
+                    preventDuplicated={true}
+                />
                 {
                     !clickedEditYes &&
                     <div className="wrapper">
